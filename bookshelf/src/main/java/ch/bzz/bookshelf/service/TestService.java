@@ -16,7 +16,6 @@ public class TestService {
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
     public Response test() {
-
         return Response
                 .status(200)
                 .entity("Test erfolgreich")

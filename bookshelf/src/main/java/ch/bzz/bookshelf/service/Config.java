@@ -1,5 +1,6 @@
 package ch.bzz.bookshelf.service;
 
+import ch.bzz.bookshelf.model.Book;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
@@ -12,18 +13,12 @@ import java.util.Set;
 
 import static java.lang.System.setProperties;
 
+// Annotation -> erster Teil der URL
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/bookList.properties";
+    private static final String PROPERTIES_PATH = "C:\\github\\modul133-nadina-bookshelf\\bookshelf\\src\\main\\resources\\bookList.properties";
     private static Properties properties = null;
-
-    @Override
-    public Set<Class<?>> getClasses() {
-        HashSet providers = new HashSet<Class<?>>();
-        providers.add(TestService.class);
-        return providers;
-    }
 
     public static String getProperty(String property) {
         if (Config.properties == null) {
@@ -41,7 +36,7 @@ public class Config extends Application {
         try {
             inputStream = new FileInputStream(PROPERTIES_PATH);
             properties.load(inputStream);
-            if (inputStream != null) inputStream.close();
+            inputStream.close();
         } catch (IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException();
