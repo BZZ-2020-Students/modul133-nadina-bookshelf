@@ -3,9 +3,14 @@ package ch.bzz.bookshelf.data;
 import ch.bzz.bookshelf.model.Book;
 import ch.bzz.bookshelf.model.Publisher;
 import ch.bzz.bookshelf.service.Config;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jakarta.inject.Singleton;
 
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,37 +19,53 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
+@Singleton
 public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Book> bookList;
-    private List<Publisher> publisherList;
+
+    private static List<Book> bookList;
+    private static List<Publisher> publisherList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setPublisherList(new ArrayList<>());
-        readPublisherJSON();
-        setBookList(new ArrayList<>());
-        readBookJSON();
+
+    }
+
+
+
+    /**
+     * reads the JSON-file with the book-data
+     */
+    public static void insertBook(Book book) {
+        getBookList().add(book);
+        writeBookJSON();
     }
 
     /**
-     * gets the only instance of this class
-     * @return
+     * reads the JSON-file with the book-data
      */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
-    }
+    private static void writeBookJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
 
+        String bookPath = Config.getProperty("bookJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getBookList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     /**
      * reads all books
      * @return list of books
      */
-    public List<Book> readAllBooks() {
+    public static List<Book> readAllBooks() {
         return getBookList();
     }
 
@@ -53,7 +74,7 @@ public class DataHandler {
      * @param bookUUID
      * @return the Book (null=not found)
      */
-    public Book readBookByUUID(String bookUUID) {
+    public static Book readBookByUUID(String bookUUID) {
         Book book = null;
         for (Book entry : getBookList()) {
             if (entry.getBookUUID().equals(bookUUID)) {
@@ -67,8 +88,7 @@ public class DataHandler {
      * reads all Publishers
      * @return list of publishers
      */
-    public List<Publisher> readAllPublishers() {
-
+    public static List<Publisher> readAllPublishers() {
         return getPublisherList();
     }
 
@@ -77,7 +97,7 @@ public class DataHandler {
      * @param publisherUUID
      * @return the Publisher (null=not found)
      */
-    public Publisher readPublisherByUUID(String publisherUUID) {
+    public static Publisher readPublisherByUUID(String publisherUUID) {
         Publisher publisher = null;
         for (Publisher entry : getPublisherList()) {
             if (entry.getPublisherUUID().equals(publisherUUID)) {
@@ -90,7 +110,7 @@ public class DataHandler {
     /**
      * reads the books from the JSON-file
      */
-    private void readBookJSON() {
+    private static void readBookJSON() {
         try {
             String path = Config.getProperty("bookJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -109,7 +129,7 @@ public class DataHandler {
     /**
      * reads the publishers from the JSON-file
      */
-    private void readPublisherJSON() {
+    private static void readPublisherJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -130,7 +150,11 @@ public class DataHandler {
      *
      * @return value of bookList
      */
-    private List<Book> getBookList() {
+    private static List<Book> getBookList() {
+        if (bookList == null) {
+            bookList = new ArrayList<>();
+            readBookJSON();
+        }
         return bookList;
     }
 
@@ -148,7 +172,12 @@ public class DataHandler {
      *
      * @return value of publisherList
      */
-    private List<Publisher> getPublisherList() {
+    private static List<Publisher> getPublisherList() {
+        if (publisherList == null) { // lazy initialization
+            publisherList = new ArrayList<>();
+            readPublisherJSON();
+        }
+
         return publisherList;
     }
 
