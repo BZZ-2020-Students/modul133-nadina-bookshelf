@@ -72,4 +72,20 @@ public class BookService {
                 .build();
     }
 
+    @Path("delete")
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteBook(
+            @QueryParam("uuid") String bookUUID
+    ){
+        int httpStatus = 200;
+        if (DataHandler.deleteBook(bookUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("Book erfolgreich gelöscht")
+                .build();
+    }
+
 }

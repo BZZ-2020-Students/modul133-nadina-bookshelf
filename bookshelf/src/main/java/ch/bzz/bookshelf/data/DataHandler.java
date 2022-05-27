@@ -32,14 +32,28 @@ public class DataHandler {
 
     }
 
-
-
     /**
      * reads the JSON-file with the book-data
      */
     public static void insertBook(Book book) {
         getBookList().add(book);
         writeBookJSON();
+    }
+
+    /**
+     * deletes a book identified by the bookUUID
+     * @param bookUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteBook(String bookUUID) {
+        Book book = readBookByUUID(bookUUID);
+        if (book != null) {
+            getBookList().remove(book);
+            writeBookJSON();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -60,6 +74,7 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
 
     /**
      * reads all books
