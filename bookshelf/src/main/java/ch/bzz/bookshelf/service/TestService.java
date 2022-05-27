@@ -1,5 +1,6 @@
 package ch.bzz.bookshelf.service;
 
+import ch.bzz.bookshelf.model.Publisher;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,6 +17,7 @@ public class TestService {
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
     public Response test() {
+
         return Response
                 .status(200)
                 .entity("Test erfolgreich")
