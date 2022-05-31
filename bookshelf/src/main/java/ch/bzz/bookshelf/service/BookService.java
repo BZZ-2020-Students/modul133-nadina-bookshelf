@@ -88,6 +88,17 @@ public class BookService {
                 .build();
     }
 
+    /**
+     * updates a book
+     * @param bookUUID uuid of the book
+     * @param title title of the book
+     * @param author author of the book
+     * @param publisherUUID uuid of the publisher
+     * @param price price of the book
+     * @param isbn isbn of the book
+     * @return Response
+     */
+    
     @Path("update")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
