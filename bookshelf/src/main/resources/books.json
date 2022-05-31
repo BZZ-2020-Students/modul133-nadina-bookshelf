@@ -1,43 +1,43 @@
 [ {
-  "bookUUID" : "3247c340-c712-402e-b400-0a23a9368c97",
-  "title" : "An Echo Of Things To Come",
-  "author" : "James Islington",
-  "price" : 32.5,
-  "isbn" : "978-0-3162-7409-8",
-  "publisherUUID" : "Orbit"
+  "bookUUID" : "3c68d5a1-3857-45c3-ae31-022e21e25b3f",
+  "title" : "book2",
+  "author" : "Nadina",
+  "price" : 100,
+  "isbn" : "33",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
-  "bookUUID" : "db117daa-e295-4597-abcd-a69496797dc0",
-  "title" : "The Shadow of What Was Lost",
-  "author" : "James Islington",
-  "price" : 50,
-  "isbn" : "978-1-1234-5678-9",
-  "publisherUUID" : "Orbit"
+  "bookUUID" : "72613cee-de01-427d-b4b9-2ea4ed1c8c92",
+  "title" : "book3",
+  "author" : "Nadina",
+  "price" : 100,
+  "isbn" : "33",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
-  "bookUUID" : "c746a291-0ef9-4b2a-8268-392b12d636bd",
-  "title" : "The Winds of Winter",
-  "author" : "George R R R R Martin",
-  "price" : 52.75,
-  "isbn" : "978-0-1256-0432-1",
-  "publisherUUID" : "Bantam"
+  "bookUUID" : "c03f4800-f693-4a8f-a930-2306b2b84376",
+  "title" : "book4",
+  "author" : "Nadina",
+  "price" : 100,
+  "isbn" : "33",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
-  "bookUUID" : "73bd4187-a5b7-4864-be79-327bb8ed43bf",
-  "title" : "The wise man's fear",
-  "author" : "Patrick Rothfuss",
-  "price" : 27.75,
-  "isbn" : "978-0-7564-0473-4",
-  "publisherUUID" : "DAW Books"
+  "bookUUID" : "5d743c15-5712-4ece-a553-c3209bcfe30a",
+  "title" : "book5",
+  "author" : "Nadina",
+  "price" : 100,
+  "isbn" : "33",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
-  "bookUUID" : "f733f646-5765-4ef9-9316-65bbca967689",
-  "title" : "Buch",
-  "author" : "Magnus",
-  "price" : 12.50,
-  "isbn" : "12421312421fwdf",
-  "publisherUUID" : "DAW Books"
+  "bookUUID" : "a468a0e9-c0c9-4a41-9b04-3e7d3227c617",
+  "title" : "book6",
+  "author" : "Nadina",
+  "price" : 100,
+  "isbn" : "33",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
-  "bookUUID" : "ab59e204-95e4-44b8-a3d1-3e0dbf64d286",
-  "title" : "Book",
-  "author" : "Moritz",
-  "price" : 90,
-  "isbn" : "0923423-23",
-  "publisherUUID" : "DAW Books"
+  "bookUUID" : "76d4bad9-87d8-4a43-8fe8-baa37d9bbf3a",
+  "title" : "Book7",
+  "author" : "Nadina Amlser",
+  "price" : 35,
+  "isbn" : "123456789",
+  "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 } ]
