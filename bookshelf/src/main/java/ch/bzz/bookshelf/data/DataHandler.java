@@ -57,6 +57,13 @@ public class DataHandler {
     }
 
     /**
+     * updates a book identified by the bookUUID
+     */
+    public static void updateBook(){
+        writeBookJSON();
+    }
+
+    /**
      * reads the JSON-file with the book-data
      */
     private static void writeBookJSON() {

@@ -25,13 +25,12 @@ public class Book {
         return getPublisher().getPublisherUUID();
     }
 
-    public Book setPublisherUUID(String publisherUUID) {
+    public void setPublisherUUID(String publisherUUID) {
         setPublisher(new Publisher());
         Publisher publisher = DataHandler.readPublisherByUUID(publisherUUID);
         getPublisher().setPublisherUUID(publisherUUID);
-        getPublisher().setPublisherUUID(publisher.getPublisher());
         getPublisher().setPublisher(publisher.getPublisher());
-        return null;
+        //return null;
     }
 
 

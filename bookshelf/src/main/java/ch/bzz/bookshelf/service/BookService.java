@@ -88,4 +88,34 @@ public class BookService {
                 .build();
     }
 
+    @Path("update")
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateBook(
+            @FormParam("uuid") String bookUUID,
+            @FormParam("title") String title,
+            @FormParam("author") String author,
+            @FormParam("publisherUUID") String publisherUUID,
+            @FormParam("price") BigDecimal price,
+            @FormParam("isbn") String isbn
+    ){
+        int httpStatus = 200;
+        Book book = DataHandler.readBookByUUID(bookUUID);
+        if (book != null) {
+            book.setTitle(title);
+            book.setAuthor(author);
+            book.setPublisherUUID(publisherUUID);
+            book.setPrice(price);
+            book.setIsbn(isbn);
+
+            DataHandler.updateBook();
+        }else{
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("Book erfolgreich aktualisiert")
+                .build();
+    }
+
 }
