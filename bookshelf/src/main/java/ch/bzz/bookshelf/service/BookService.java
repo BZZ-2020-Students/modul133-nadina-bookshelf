@@ -92,7 +92,7 @@ public class BookService {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateBook(
-            @FormParam("uuid") String bookUUID,
+            @FormParam("bookUUID") String bookUUID,
             @FormParam("title") String title,
             @FormParam("author") String author,
             @FormParam("publisherUUID") String publisherUUID,

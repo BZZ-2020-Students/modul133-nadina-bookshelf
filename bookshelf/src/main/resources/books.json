@@ -35,9 +35,9 @@
   "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 }, {
   "bookUUID" : "76d4bad9-87d8-4a43-8fe8-baa37d9bbf3a",
-  "title" : "book7",
-  "author" : "Nadina",
-  "price" : 100,
-  "isbn" : "33",
+  "title" : "Book7",
+  "author" : "Nadina Amlser",
+  "price" : 35,
+  "isbn" : "123456789",
   "publisherUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
 } ]
